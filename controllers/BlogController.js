@@ -64,7 +64,7 @@ BlogRouter.get("/search/:query", async (req, res) => {
   }
 });
 
-BlogRouter.get("/hastag/:hastag", async (req, res) => {
+BlogRouter.get("/hashtag/:hastag", async (req, res) => {
   const hastag = req.params.hastag;
   console.log(hastag);
   try {

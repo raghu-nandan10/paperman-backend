@@ -16,19 +16,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, "https://paperman-frontend.netlify.app"],
+    origin: [process.env.FRONTEND_URL, "http://localhost:3000"],
     credentials: true,
   })
 );
+
 app.use((req, res, next) => {
   const accessToken = req.cookies.access_token;
 
   if (accessToken) {
     req.headers.authorization = `Bearer ${accessToken}`;
   }
-
   next();
 });
+
 app.use(
   expressjwt({
     secret: process.env.JWT_SECRET_KEY,
@@ -37,9 +38,9 @@ app.use(
     path: [
       /^\/auth/,
       /^\/blog\/find\/[a-fA-F0-9]+$/,
-      /^\/blog\/search\/\w+$/,
-      /^\/blog\/hashtag\/\w+$/,
-      "/",
+      /^\/blog\/search\/.+$/,
+      /^\/blog\/hashtag\/.+$/,
+      /^\/blog\/all$/,
     ],
   })
 );
@@ -48,15 +49,6 @@ app.use("/blog", BlogRouter);
 app.use("/auth", AuthRouter);
 app.get("/", (req, res) => {
   return res.json({ message: "Server is up and running" });
-});
-app.use((err, req, res, next) => {
-  console.log("error hitting on the backend");
-  console.log(err);
-  if (err.name == "UnauthorizedError") {
-    return res.status(401).json({ error: "Unauthorized access" });
-  } else {
-    return res.status(401).json({ error: "Not authenticated yet " });
-  }
 });
 
 app.listen(process.env.PORT, () => {
