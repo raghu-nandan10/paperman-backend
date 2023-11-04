@@ -41,6 +41,7 @@ app.use(
       /^\/blog\/search\/.+$/,
       /^\/blog\/hashtag\/.+$/,
       /^\/blog\/all$/,
+      "/",
     ],
   })
 );
