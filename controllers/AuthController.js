@@ -45,7 +45,7 @@ AuthRouter.post("/register", async (req, res) => {
             maxAge: 3600000,
             sameSite: "none",
             secure: true,
-            domain: "paperman-frontend.netlify.app",
+
             httpOnly: true,
           })
           .json({ message: "Registration Successfull", success: true });
@@ -79,7 +79,7 @@ AuthRouter.post("/login", async (req, res) => {
                 maxAge: 3600000,
                 sameSite: "none",
                 secure: true,
-                domain: "paperman-frontend.netlify.app",
+
                 httpOnly: true,
               });
               return res
