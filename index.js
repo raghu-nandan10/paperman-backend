@@ -45,7 +45,7 @@ app.use(
 
 app.use("/blog", BlogRouter);
 app.use("/auth", AuthRouter);
-app.get("", (req, res) => {
+app.get("/", (req, res) => {
   return res.json({ message: "Server is up and running" });
 });
 app.use((err, req, res, next) => {
