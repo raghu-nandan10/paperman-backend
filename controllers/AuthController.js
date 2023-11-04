@@ -43,7 +43,10 @@ AuthRouter.post("/register", async (req, res) => {
           .status(200)
           .cookie("access_token", jwt, {
             maxAge: 3600000,
-            domain: process.env.FRONTEND_URL,
+            sameSite: "none",
+            secure: true,
+            domain: "paperman-frontend.netlify.app",
+            httpOnly: true,
           })
           .json({ message: "Registration Successfull", success: true });
       }
@@ -73,8 +76,11 @@ AuthRouter.post("/login", async (req, res) => {
             const jwt = JwtSignIn(jwtObject);
             if (jwt) {
               res.cookie("access_token", jwt, {
-                maxAge: 86400000,
-                domain: process.env.FRONTEND_URL,
+                maxAge: 3600000,
+                sameSite: "none",
+                secure: true,
+                domain: "paperman-frontend.netlify.app",
+                httpOnly: true,
               });
               return res
                 .status(200)
