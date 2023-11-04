@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, "https://paperman.netlify.app"],
+    origin: [process.env.FRONTEND_URL, "http://localhost:3000"],
     credentials: true,
   })
 );
@@ -36,9 +36,9 @@ app.use(
   }).unless({
     path: [
       /^\/auth/,
-      "/blog/all",
-      /^\/blog\/[a-fA-F0-9]{24}$/,
-      /^\/blog\/hashtag\/node.js/,
+      /^\/blog\/find\/[a-fA-F0-9]+$/,
+      /^\/blog\/search\/\w+$/,
+      /^\/blog\/hashtag\/\w+$/,
       "/",
     ],
   })
