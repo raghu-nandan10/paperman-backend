@@ -73,7 +73,6 @@ AuthRouter.post("/login", async (req, res) => {
             if (jwt) {
               res.cookie("access_token", jwt, {
                 maxAge: 86400000,
-                httpOnly: true,
               });
               return res
                 .status(200)
