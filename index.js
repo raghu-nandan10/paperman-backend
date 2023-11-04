@@ -45,7 +45,9 @@ app.use(
 
 app.use("/blog", BlogRouter);
 app.use("/auth", AuthRouter);
-
+app.get("", (req, res) => {
+  return res.json({ message: "Server is up and running" });
+});
 app.use((err, req, res, next) => {
   console.log("error hitting on the backend");
   console.log(err);
@@ -55,9 +57,7 @@ app.use((err, req, res, next) => {
     return res.status(401).json({ error: "Not authenticated yet " });
   }
 });
-app.get("/test", (req, res) => {
-  return res.json({ message: "Server is up and running" });
-});
+
 app.listen(process.env.PORT, () => {
   mongoose
     .connect(process.env.DBSTRING)
