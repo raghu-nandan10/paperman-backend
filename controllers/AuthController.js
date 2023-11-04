@@ -43,6 +43,7 @@ AuthRouter.post("/register", async (req, res) => {
           .status(200)
           .cookie("access_token", jwt, {
             maxAge: 3600000,
+            domain: process.env.FRONTEND_URL,
           })
           .json({ message: "Registration Successfull", success: true });
       }
@@ -73,6 +74,7 @@ AuthRouter.post("/login", async (req, res) => {
             if (jwt) {
               res.cookie("access_token", jwt, {
                 maxAge: 86400000,
+                domain: process.env.FRONTEND_URL,
               });
               return res
                 .status(200)
