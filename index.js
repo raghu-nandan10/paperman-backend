@@ -39,6 +39,7 @@ app.use(
       "/blog/all",
       /^\/blog\/[a-fA-F0-9]{24}$/,
       /^\/blog\/hashtag\/node.js/,
+      "/",
     ],
   })
 );
