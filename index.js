@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, "http://localhost:3000"],
+    origin: [process.env.FRONTEND_URL, "https://paperman-frontend.netlify.app"],
     credentials: true,
   })
 );
