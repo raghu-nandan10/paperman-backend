@@ -3,13 +3,13 @@
   "builds": [
     {
       "src": "./index.js",
-      "use": "@vercal/node"
+      "use": "@now/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "index.js"
     }
   ]
 }
